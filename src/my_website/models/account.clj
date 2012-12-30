@@ -15,4 +15,4 @@
 (defn- calc [my-salary her-salary total]
   (let [her-amount (calc-her-amount my-salary her-salary total)
         my-amount (calc-my-amount total her-amount)]
-    ({:her-amount her-amount :my-amount my-amount})))
+    {:her-amount her-amount :my-amount my-amount}))
