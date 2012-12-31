@@ -23,11 +23,14 @@
             (h/submit-button "Calculate"))))
 
 (defpage [:post "/"] {:as data}
-  (let [[my-salary her-salary total] data]
-    (render "/result" (acc/calc(my-salary
-                                her-salary
-                                total)))))
+  (let [{:keys [my-salary her-salary total]} data]
+    (render "/result" [my-salary her-salary total])))
 
 (defpage "/result" {:as data}
-  (common/layout
-   [:p data]))
+  (let [[my-salary her-salary total] data
+        {:keys [her-amount my-amount]} (acc/calc (Integer. my-salary)
+                                                 (Integer. her-salary)
+                                                 (Integer. total))]
+    (common/layout
+     [:p "Her amount: " her-amount]
+     [:p "My amount: " my-amount])))
