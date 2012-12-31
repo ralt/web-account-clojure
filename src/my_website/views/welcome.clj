@@ -1,13 +1,12 @@
 (ns my-website.views.welcome
   (:require [my-website.views.common :as common])
-  (:use [noir.core :only [defpage]])
-  (:require [noir.core :refer [render]])
+  (:require [noir.core :refer [render defpage]])
   (:require [my-website.models.account :as acc])
   (:require [hiccup.form :as h]))
 
 (defpage "/welcome" []
-         (common/layout
-           [:p "Welcome to my-website"]))
+  (common/layout
+   [:p "Welcome to my-website"]))
 
 (defpage "/" []
   (common/layout
