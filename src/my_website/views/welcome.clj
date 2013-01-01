@@ -28,9 +28,12 @@
 
 (defpage "/result" {:as data}
   (let [[my-salary her-salary total] data
-        {:keys [her-amount my-amount]} (acc/calc (Integer. my-salary)
-                                                 (Integer. her-salary)
-                                                 (Integer. total))]
+
+        ; Temp symbol to make it cleaner
+        result (acc/calc my-salary her-salary total)
+
+        {:keys [her-amount my-amount]} result]
+
     (common/layout
      [:p "Her amount: " her-amount]
      [:p "My amount: " my-amount])))
